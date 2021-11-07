@@ -1,14 +1,7 @@
 #!/usr/bin/env python3
 import pygame
-import numpy as np
 
 from colors import colors
-
-#(W, H) = (960, 540)
-
-#pygame.init()
-#screen = pygame.display.set_mode((W,H))
-
 
 class Display:
   def __init__(self, width, height):
