@@ -1,13 +1,33 @@
 #!/usr/bin/env python3
 import pygame
+import numpy as np
 
-(W, H) = (960, 540)
+from colors import colors
 
-pygame.init()
-screen = pygame.display.set_mode((W,H))
+#(W, H) = (960, 540)
+
+#pygame.init()
+#screen = pygame.display.set_mode((W,H))
+
+
+class Display:
+  def __init__(self, width, height):
+    pygame.init()
+    self.screen = pygame.display.set_mode((width, height))
+
+  def render(self):
+    running = True
+    while running:
+      for event in pygame.event.get():
+        # title bar quit
+        if event.type == pygame.QUIT:
+          running = False
+        # esc key quit
+        if event.type == pygame.KEYDOWN and event.key == pygame.K_ESCAPE:
+          print("%s pressed, quitting" % event.key)
+          running = False
+      pygame.display.flip()
 
 if __name__ == "__main__":
-  while (1):
-    pygame.display.flip()
-    
-    
+  d = Display(960, 540) 
+  d.render()
