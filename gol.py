@@ -39,9 +39,11 @@ class Grid:
       tmp_width = len(row)
     return True
   
-  def render_grid(self):
+  def render_grid(self, grid=None): # ascii
+    if grid is None:
+      grid = self.grid
     # looks like printing np ndarray but without square braces
-    for i, row in enumerate(self.grid):
+    for i, row in enumerate(grid):
       for j, cell in enumerate(row):
         if j == len(row)-1:
           print(cell)
