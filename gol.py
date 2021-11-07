@@ -40,7 +40,15 @@ class Grid:
     return True
   
   def render_grid(self):
-    print(self.grid)
+    # looks like printing np ndarray but without square braces
+    for i, row in enumerate(self.grid):
+      for j, cell in enumerate(row):
+        if j == len(row)-1:
+          print(cell)
+        else:
+          print(cell, end=' ')
+
+
 if __name__ == "__main__":
   g = Grid('test_gen0.txt')
   g.render_grid()
