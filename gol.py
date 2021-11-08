@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 import numpy as np
 
-
 class Grid:
   def __init__(self, input_file):
     self.grid_file = input_file 
@@ -50,7 +49,18 @@ class Grid:
         else:
           print(cell, end=' ')
 
+class Cell:
+  def __init__(self):
+    raise NotImplementedError
+     
+
+def main():
+  g = Grid('test_gen0.txt')
+  d = Display(g.grid)  
+
+
 
 if __name__ == "__main__":
-  g = Grid('test_gen0.txt')
-  g.render_grid()
+  #g = Grid('test_gen0.txt')
+  #g.render_grid()
+  main()
