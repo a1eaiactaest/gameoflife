@@ -7,8 +7,7 @@ class Display:
   def __init__(self, array):
     #self.W = len(array[0]) * self.ratio
     #self.H = len(array) * self.ratio
-    self.grid_W = len(array[0])
-    self.grid_H = len(array)
+    self.array = array
     self.W = 600
     self.H = 600
     self.screen = pygame.display.set_mode((self.W, self.H))
@@ -31,10 +30,13 @@ class Display:
       pygame.display.flip()
 
   def draw_grid(self):
+    grid_W = len(self.array[0])
+    grid_H = len(self.array)
     border_width = 3
-    box_size = self.W/self.grid_W
-    for row in range(self.grid_H):
-      for col in range(self.grid_W):
+    box_size = self.W/grid_W
+    print('drawing grid of size (%d,%d), with boxes sized %2.f'%(grid_W, grid_H, box_size))
+    for row in range(grid_H):
+      for col in range(grid_W):
         rect = pygame.Rect(row*box_size, col*box_size, box_size, box_size)
         pygame.draw.rect(self.screen, colors.WHITE, rect, 1)
     
