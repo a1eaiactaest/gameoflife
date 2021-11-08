@@ -13,6 +13,5 @@ def biased_generate(width, height, freq):
     ofile.write('\n')
   ofile.close()
 
-
 if __name__ == "__main__":
-  biased_generate(20, 20, 2)
+  biased_generate(50, 50, 2)

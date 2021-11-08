@@ -53,7 +53,6 @@ class Grid:
 class Cell:
   def __init__(self):
     raise NotImplementedError
-     
 
 def main():
   g = Grid('random_gen0.txt')
