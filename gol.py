@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 import numpy as np
+from display import Display
 
 class Grid:
   def __init__(self, input_file):
@@ -55,10 +56,9 @@ class Cell:
      
 
 def main():
-  g = Grid('test_gen0.txt')
+  g = Grid('random_gen0.txt')
   d = Display(g.grid)  
-
-
+  d.render()
 
 if __name__ == "__main__":
   #g = Grid('test_gen0.txt')
