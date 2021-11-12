@@ -6,6 +6,59 @@ class Grid:
   def __init__(self, input_file):
     self.grid_file = input_file 
     self.grid, self.W, self.H = self.load_zero_gen(self.grid_file)
+    
+  def is_in_bounds(self, x, y):
+    if x <= len(self.grid[0])-1 and y <= len(self.grid)-1:
+      return True
+    else:
+      return False
+
+
+
+  def get_cell_neighbours(self, x, y): 
+    ret = []
+    # up
+    if self.is_in_bounds(y+1, x):
+      if self.grid[y+1][x] == 1:
+        ret.append([y+1,x])
+
+    # up left
+    if self.is_in_bounds(y+1, x-1):
+      if self.grid[y+1][x-1] == 1:
+        ret.append([y+1,x-1])
+
+    # up right
+    if self.is_in_bounds(y+1, x+1):
+      if self.grid[y+1][x+1] == 1:
+        ret.append([y+1,x+1])
+
+    # down
+    if self.is_in_bounds(y-1, x):
+      if self.grid[y-1][x] == 1:
+        ret.append([y-1,x])
+
+    # down left
+    if self.is_in_bounds(y-1, x-1):
+      if self.grid[y-1][x-1] == 1:
+        ret.append([y-1,x-1])
+
+    # down right
+    if self.is_in_bounds(y-1, x+1):
+      if self.grid[y-1][x+1] == 1:
+        ret.append([y-1,x+1])
+
+    # left
+    if self.is_in_bounds(y, x-1):
+      if self.grid[y][x-1] == 1:
+        ret.append([y,x-1])
+
+    # right
+    if self.is_in_bounds(y, x+1):
+      if self.grid[y][x+1] == 1:
+        ret.append([y,x+1])
+
+    #return ret
+    return ret
 
   def load_zero_gen(self, input_file):
     # split on rows
@@ -50,16 +103,18 @@ class Grid:
         else:
           print(cell, end=' ')
 
-class Cell:
-  def __init__(self):
-    raise NotImplementedError
+class GOL:
+  def __init__(self, file_name):
+    self.g = Grid(file_name)
+    self.d = Display(self.g.grid)
 
-def main():
-  g = Grid('random_gen0.txt')
-  d = Display(g.grid)  
-  d.render()
+  def main_loop(self):
+    while self.d.running:
+      self.d.render_frame()
+      for y in range(len(self.g.grid)):
+        for x in range(len(self.g.grid[y])):
+          print(self.g.get_cell_neighbours(x,y))
 
 if __name__ == "__main__":
-  #g = Grid('test_gen0.txt')
-  #g.render_grid()
-  main()
+  game = GOL('test_gen0.txt')
+  game.main_loop()
