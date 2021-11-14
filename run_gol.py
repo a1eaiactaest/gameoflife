@@ -25,7 +25,7 @@ def main(file_name):
   cols = len(board[0])
 
   while (1):
-    print(gen)
+    print('gen: ', gen)
     render_ascii(board) 
 
     # empty 2d array to copy values in to 
@@ -52,13 +52,9 @@ def main(file_name):
     board = next_gen # swap boards
     gen+=1
 
-    sleep(.5)
+    sleep(.1)
 
 
 if __name__ == "__main__":
   file_name = sys.argv[1]
   main(file_name)
-  #board=loadfile('test_gen0.txt')
-  #print(get_neighbors(board, 4, 3, (10,10)))
-  #print(is_alive(board[3][4]))
-
