@@ -18,7 +18,6 @@ def array_is_valid(array):
   assert isinstance(array, np.ndarray), f'array must be numpy.ndarray, but is {type(array)}'
   shape = array.shape
   assert len(shape) == 2, f'board array has to be 2D, but is {shape}'
-  assert shape[0]==shape[1], 'number of characters in a row differs'
 
   return True
   
