@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+import sys
 from time import sleep
 import numpy as np
 
@@ -26,7 +27,8 @@ def main(file_name):
   while (1):
     print(gen)
     render_ascii(board) 
-    # empty 2d array
+
+    # empty 2d array to copy values in to 
     next_gen = np.zeros((cols, rows), str) 
     
     # calculate next generation
@@ -47,13 +49,15 @@ def main(file_name):
         else:
           next_gen[y][x] = cell
 
-    board = next_gen
+    board = next_gen # swap boards
     gen+=1
-    sleep(1)
+
+    sleep(.5)
 
 
 if __name__ == "__main__":
-  main('test_gen0.txt')
+  file_name = sys.argv[1]
+  main(file_name)
   #board=loadfile('test_gen0.txt')
   #print(get_neighbors(board, 4, 3, (10,10)))
   #print(is_alive(board[3][4]))
